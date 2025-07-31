@@ -1,1 +1,31 @@
+body {
+    font-family: 'Georgia', serif;
+    background-color: #fdf6e3;
+    color: #3e2f20;
+    margin: 0;
+    padding: 0;
+}
 
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f9f1e7;
+    border: 2px solid #d8c3a5;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 28px;
+    color: #7b5e3b;
+}
+
+a {
+    color: #865439;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
