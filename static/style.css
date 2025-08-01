@@ -1,24 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>STAY-Watcher Shrine</title>
-  <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>STAY-Watcher Shrine 🌙</h1>
-    <p>Watching Stray Kids' Instagram lives:</p>
-    <ul>
-      {% for user in users %}
-      <li>
-        <strong>@{{ user }}</strong> –
-        {% if statuses[user] %}<span class="live">🔴 LIVE</span>
-        {% else %}<span class="offline">💤 Offline</span>{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    <p class="note">Status updates every few minutes.</p>
-  </div>
-</body>
-</html>
+body {
+  font-family: 'Georgia', serif;
+  background-color: #fefaf3;
+  color: #4b3f35;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #f6ede2;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+}
+h1 {
+  color: #7b5e3b;
+  margin-bottom: 20px;
+}
+.live {
+  color: red;
+  font-weight: bold;
+}
+.offline {
+  color: #999;
+}
+.note {
+  font-size: 0.9rem;
+  color: #aa8870;
+  margin-top: 20px;
+}
