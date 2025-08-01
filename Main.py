@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>STAY-Watcher Shrine</title>
-  <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>STAY-Watcher Shrine 🌙</h1>
-    <p>Watching Stray Kids' Instagram lives:</p>
-    <ul>
-      {% for user in users %}
-      <li>
-        <strong>@{{ user }}</strong> –
-        {% if statuses[user] %}<span class="live">🔴 LIVE</span>
-        {% else %}<span class="offline">💤 Offline</span>{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    <p class="note">Status updates every few minutes.</p>
-  </div>
-</body>
-</html>
+from flask import Flask, render_template
+import json
+import os
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    with open("instagram_users.txt", "r") as f:
+        users = [line.strip() for line in f if line.strip()]
+    with open("checked_users.json", "r") as f:
+        statuses = json.load(f)
+    return render_template("index.html", users=users, statuses=statuses)
+
+@app.route("/healthz")
+def health_check():
+    return "OK", 200
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 3000)))
